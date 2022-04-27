@@ -1,20 +1,28 @@
 package vetor_automatizado;
 
-public class Lista {
-	private int index = 10;  
-	private String[] vet = new String[index];
+public class Lista { 
+	private String[] vet;
 	private int posicaoVetor;
 	
+	public Lista(int tamanho) {
+		vet = new String[tamanho];
+	}
 	
+	public Lista() {
+		vet = new String[4];
+	}
 	
 	public void adicionar(String text) {
+		if (posicaoVetor == vet.length)
+			aumentarIndex();
+		
 		vet[posicaoVetor] = text;
 		posicaoVetor++;
 		
 	}
 		
 	public boolean alterar(int posicao, String novoText) {
-		if (posicao < index) {
+		if (posicao < vet.length ) {
 			vet[posicao] = novoText;
 			return true;
 		}else{
@@ -40,12 +48,21 @@ public class Lista {
 		for (int i = index; i < vet.length - 1; i++) {
 			vet[i] = vet[i + 1];
 		}
-		vet[vet.length - 1] = "";
+		vet[vet.length - 1] = null;
 	}
 	
 	public void imprimirLista() {
 		for (int i = 0; i < vet.length; i++) {
 			System.out.println(vet[i]);
 		}
+	}
+	
+	private void aumentarIndex() {
+		String vetAux[] = new String[vet.length * 2];
+		
+		for (int i = 0; i < vet.length; i++) {
+			vetAux[i] = vet[i];
+		}
+		vet = vetAux;
 	}
 }
