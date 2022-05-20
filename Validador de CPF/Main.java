@@ -26,7 +26,7 @@ public class Main {
 			}finally {
 				  confirm = String.valueOf(JOptionPane.showConfirmDialog(null, "Deseja continuar?")); 
 			}
-		} while (confirm.equals("1"));
+		} while (confirm.equals("0"));
 		
 	}
 
